@@ -1,10 +1,32 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import "./App.css";
 import { Upload, Input, DatePicker, TimePicker, message } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 
 const App: FC = () => {
+
+	const [review, setReview] = useState({name: '', email: '', date: '', time: ''});
+
+	const changeText = (value: string, prop: string) => {
+		const obj = {...review};
+
+		if (prop === 'name')
+			obj.name = value;
+		if (prop === 'email')
+			obj.email = value;
+		if (prop === 'date')
+			obj.date = value;
+		if (prop === 'time')
+			obj.time = value;
+		setReview(obj);
+	}
+
+	const submitBack = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		setReview({name: '', email: '', date: '', time: ''});
+		console.log(review);
+	}
 
 	const { Dragger } = Upload;
 
@@ -40,19 +62,21 @@ const App: FC = () => {
 				<div className="line"></div>
 				<h1 className="titleReview1">Get Your Review !</h1>
 				<p className="paraReview">Book a meeting with our team to review your results</p>
-				<div className="name-input">
-					<Input placeholder="Name" className="text-input"/>
-				</div>
-				<div className="email-input">
-					<Input placeholder="Email adress" className="text-input"/>
-				</div>
-				<div className="date-picker">
-					<DatePicker size="large" placeholder="Select Date" className="text-input"/>
-				</div>
-				<div className="time-picker">
-					<TimePicker format="HH:mm" size="large" placeholder="Select Hour" className="text-input"/>
-				</div>
-				<button className="bookButton">Book</button>
+				<form onSubmit={(e) => submitBack(e)}>
+					<div className="name-input">
+						<Input value={review.name} onChange={(e) => changeText(e.currentTarget.value, 'name')} placeholder="Name" className="text-input"/>
+					</div>
+					<div className="email-input">
+						<Input value={review.email} onChange={(e) => changeText(e.currentTarget.value, 'email')} placeholder="Email adress" className="text-input"/>
+					</div>
+					<div className="date-picker">
+						<DatePicker onChange={(date, content) => changeText(content, 'date')} size="large" placeholder="Select Date" className="text-input"/>
+					</div>
+					<div className="time-picker">
+						<TimePicker onChange={(date, content) => changeText(content, 'time')} format="HH:mm" size="large" placeholder="Select Hour" className="text-input"/>
+					</div>
+					<button type="submit" className="bookButton">Book</button>
+				</form>
 			</div>
 		</React.Fragment>
 	);
