@@ -3,6 +3,8 @@ import "./App.css";
 import { Upload, Input, DatePicker, TimePicker, message } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
+import emailjs from 'emailjs-com';
+import moment from "moment";
 
 const App: FC = () => {
 
@@ -22,10 +24,16 @@ const App: FC = () => {
 		setReview(obj);
 	}
 
-	const submitBack = (e: React.FormEvent<HTMLFormElement>) => {
+	function sendEmail(e : any) {
 		e.preventDefault();
 		setReview({name: '', email: '', date: '', time: ''});
-		console.log(review);
+
+		emailjs.sendForm('service_7d7mjyh', 'template_06sj7t4', e.target, 'user_AtVqPPa3dfx6Y9RN4fJe4')
+		  .then((result) => {
+			  console.log(result.text);
+		  }, (error) => {
+			  console.log(error.text);
+		  });
 	}
 
 	const { Dragger } = Upload;
@@ -37,11 +45,15 @@ const App: FC = () => {
 	onChange(info: any) {
 		const { status } = info.file;
 		if (status === 'done') {
-		message.success(`${info.file.name} file uploaded successfully.`);
+			message.success(`${info.file.name} file uploaded successfully.`);
 		} else if (status === 'error') {
-		message.error(`${info.file.name} file upload failed.`);
+			message.error(`${info.file.name} file upload failed.`);
 		}
 	}
+	};
+
+	function disableDate(current : any) {
+		return current && current < moment().endOf('day');
 	};
 
 	return (
@@ -62,18 +74,18 @@ const App: FC = () => {
 				<div className="line"></div>
 				<h1 className="titleReview1">Get Your Review !</h1>
 				<p className="paraReview">Book a meeting with our team to review your results</p>
-				<form onSubmit={(e) => submitBack(e)}>
+				<form onSubmit={(e) => sendEmail(e)}>
 					<div className="name-input">
-						<Input value={review.name} onChange={(e) => changeText(e.currentTarget.value, 'name')} placeholder="Name" className="text-input"/>
+						<Input value={review.name} onChange={(e) => changeText(e.currentTarget.value, 'name')} placeholder="Name" className="text-input" name="name"/>
 					</div>
 					<div className="email-input">
-						<Input value={review.email} onChange={(e) => changeText(e.currentTarget.value, 'email')} placeholder="Email adress" className="text-input"/>
+						<Input value={review.email} onChange={(e) => changeText(e.currentTarget.value, 'email')} placeholder="Email adress" className="text-input" name="email"/>
 					</div>
 					<div className="date-picker">
-						<DatePicker onChange={(date, content) => changeText(content, 'date')} size="large" placeholder="Select Date" className="text-input"/>
+						<DatePicker disabledDate={disableDate} onChange={(date, content) => changeText(content, 'date')} size="large" placeholder="Select Date" name="date"/>
 					</div>
 					<div className="time-picker">
-						<TimePicker onChange={(date, content) => changeText(content, 'time')} format="HH:mm" size="large" placeholder="Select Hour" className="text-input"/>
+						<TimePicker onChange={(date, content) => changeText(content, 'time')} format="HH:mm" size="large" placeholder="Select Hour" name="time"/>
 					</div>
 					<button type="submit" className="bookButton">Book</button>
 				</form>
