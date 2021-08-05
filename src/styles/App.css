@@ -69,13 +69,40 @@
 }
 
 .upload-place {
-  width: 687px;
-  height: 140px;
+  display: none;
+}
+
+.upload-zone {
+  height: 200px;
+  border-radius: 10px;
+  padding: 0 25px;
+
+  border: 2px dashed black;
+
+  cursor: pointer;
+  transition: all ease-out 200ms;
+
+  color: black;
+  background-color: white;
+
+  font-size: 30px;
+  display: flex;
+  align-items: center;
 
   position: absolute;
-  top: 22%;
+  top: 24%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.upload-zone:not(.chosen):hover {
+  background: white;
+  box-shadow: 0 0 10px 0 white;
+}
+
+.upload-zone.chosen {
+  background: rgb(19,158,54);
+  background: linear-gradient(80deg, rgba(19,158,54,1) 0%, rgba(22,212,18,1) 49%, rgba(24,226,61,1) 100%);
 }
 
 .line {

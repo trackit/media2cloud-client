@@ -34,23 +34,37 @@ const ReviewSection: FC = () => {
         }
         uploadFile(file);
         emailjs.sendForm('service_7d7mjyh', 'template_06sj7t4', e.target, 'user_AtVqPPa3dfx6Y9RN4fJe4')
-            .then((result) => {
-                setReview({ name: '', email: '', date: '', time: '' });
-                console.log(result.text);
-            }, (error) => {
-                console.log(error.text);
-            });
+        .then((result) => {
+            setReview({ name: '', email: '', date: '', time: '' });
+            console.log(result.text);
+        }, (error) => {
+            console.log(error.text);
+        });
     }
 
     function disableDate(current: any) {
         return current && current < moment().endOf('day');
     };
 
+    function displayFileChoosen(file: any) {
+        const btn = document.getElementById("upload-btn");
+
+        if (file === null) {
+            btn?.classList.remove("chosen")
+            return <p></p>;
+        };
+        if (file.name !== null)
+            btn?.classList.add("chosen")
+            return <p style={{color: "black"}}>{file.name}</p>;
+    }
 
     return (
         <>
             <h1 className="menuTitle1">Upload your video</h1>
-            <input className="upload-place" type="file" onChange={(e: any) => {setFile(e.target.files[0])}}/>
+            <label id="upload-btn" className="upload-zone">
+            <input id="upload" className="upload-place" type="file" onChange={(e: any) => {setFile(e.target.files[0])}}/>
+            <span id="text">Choose a video or a image {displayFileChoosen(file)}</span>
+            </label>
             <div className="line"></div>
             <h1 className="titleReview1">Get Your Review !</h1>
             <p className="paraReview">Book a meeting with our team to review your results</p>
