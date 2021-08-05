@@ -29,14 +29,15 @@ const ReviewSection: FC = () => {
         e.preventDefault();
 
         if (review.name === '' || review.email === '') {
-            alert("Les champs doivent etre remplis !");
+            alert("You must fill all the fields");
             return;
         }
         uploadFile(file);
         emailjs.sendForm('service_7d7mjyh', 'template_06sj7t4', e.target, 'user_AtVqPPa3dfx6Y9RN4fJe4')
         .then((result) => {
-            setReview({ name: '', email: '', date: '', time: '' });
             console.log(result.text);
+            setReview({ name: '', email: '', date: '', time: '' });
+            alert("Your file has been successfully uploaded and you will receive an email with the date and time of the appointment you have booked")
         }, (error) => {
             console.log(error.text);
         });
@@ -47,23 +48,19 @@ const ReviewSection: FC = () => {
     };
 
     function displayFileChoosen(file: any) {
-        const btn = document.getElementById("upload-btn");
-
         if (file === null) {
-            btn?.classList.remove("chosen")
             return <p></p>;
         };
         if (file.name !== null)
-            btn?.classList.add("chosen")
-            return <p style={{color: "black"}}>{file.name}</p>;
+            return <p className="currentFile">{file.name}</p>;
     }
 
     return (
         <>
             <h1 className="menuTitle1">Upload your video</h1>
-            <label id="upload-btn" className="upload-zone">
-            <input id="upload" className="upload-place" type="file" onChange={(e: any) => {setFile(e.target.files[0])}}/>
-            <span id="text">Choose a video or a image {displayFileChoosen(file)}</span>
+            <label className="upload-zone">
+            <input className="upload-place" type="file" onChange={(e: any) => {setFile(e.target.files[0])}}/>
+            <span className="text">Choose video or image that you want to analyze{displayFileChoosen(file)}</span>
             </label>
             <div className="line"></div>
             <h1 className="titleReview1">Get Your Review !</h1>
