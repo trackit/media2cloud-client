@@ -59,8 +59,9 @@ const ReviewSection: FC = () => {
         <>
             <h1 className="menuTitle1">Upload your video</h1>
             <label className="upload-zone">
-            <input className="upload-place" type="file" onChange={(e: any) => {setFile(e.target.files[0])}}/>
-            <span className="text">Choose video or image that you want to analyze{displayFileChoosen(file)}</span>
+                <img src="uploadBtn.svg" alt="Upload logo"/>
+                <input className="upload-place" type="file" onChange={(e: any) => {setFile(e.target.files[0])}}/>
+                <span className="text">{displayFileChoosen(file)}</span>
             </label>
             <div className="line"></div>
             <h1 className="titleReview1">Get Your Review !</h1>

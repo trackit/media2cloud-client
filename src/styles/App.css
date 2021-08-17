@@ -60,10 +60,10 @@ MENU
 
 .menuTitle1 {
   width: 765px;
-  height: 113px;
+  height: 100px;
 
   position: absolute;
-  top: 8%;
+  top: 6%;
   left: 50%;
   transform: translate(-50%, -50%);
 
@@ -85,43 +85,32 @@ UPLOAD
 }
 
 .upload-zone {
-  height: 200px;
-  border-radius: 10px;
-  padding: 0 25px;
-  padding-bottom: 40px;
+  font-size: 26px;
 
-  border: 1.5px dashed grey;
-  border-width: 3px;
-
-  cursor: pointer;
-  transition: all ease-out 200ms;
-
-  color: black;
-  background-color: white;
-
-  font-size: 24px;
   display: flex;
   align-items: center;
   text-align: center;
 
   position: absolute;
-  top: 24%;
+  top: 18%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.upload-zone:hover {
-  background: rgb(202, 202, 202);
-  box-shadow: 0 0 10px 0 white;
+.upload-zone img {
+  filter: invert(90%);
+
+  width: 120px;
+  height: 120px;
 }
 
 .currentFile {
-  color: rgb(67, 204, 32);
+  color: rgb(255, 255, 255);
 
-  font-size: 0.8em;
+  width: 1000px;
 
   position: absolute;
-  top: 82%;
+  top: 130%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
