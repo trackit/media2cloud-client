@@ -61,7 +61,8 @@ const ReviewSection: FC = () => {
             <label className="upload-zone">
                 <img src="uploadBtn.svg" alt="Upload logo"/>
                 <input className="upload-place" type="file" onChange={(e: any) => {setFile(e.target.files[0])}}/>
-                <span className="text">{displayFileChoosen(file)}</span>
+                <span className="textClick">Click or drag file to this area to upload{displayFileChoosen(file)}</span>
+                <span className="textComm">You can upload a maximum of one hour of video</span>
             </label>
             <div className="line"></div>
             <h1 className="titleReview1">Get Your Review !</h1>
