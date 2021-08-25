@@ -1,20 +1,27 @@
+*, ::before, ::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  --res: calc(0.01 * 10vmin);
+}
+
 /*
 HEADER
 */
 
 .title1 {
-  width: 765px;
-  height: 60px;
+  width: 80%;
 
   position: absolute;
   top: 3%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  font-size: 60px;
-  line-height: 80px;
+  font-size: calc(60 * var(--res));
   text-align: center;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
   color: #FFFFFF;
 
@@ -22,18 +29,15 @@ HEADER
 }
 
 .title2 {
-  width: 765px;
-  height: 50px;
+  width: 70%;
 
   position: absolute;
   top: 9%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  font-size: 44px;
-  line-height: 80px;
+  font-size: calc(44 * var(--res));
   text-align: center;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
   color: #FFFFFF;
 
@@ -45,13 +49,15 @@ MENU
 */
 
 .menu {
-  width: 1000px;
-  height: 760px;
+  width: 50%;
+  min-height: 760px;
 
   position: absolute;
   top: 58%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  display: inline-block;
 
   background: #2E323E;
 
@@ -59,16 +65,14 @@ MENU
 }
 
 .menuTitle1 {
-  width: 765px;
-  height: 100px;
+  width: 70%;
 
   position: absolute;
-  top: 6%;
+  top: 4%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  font-size: 34px;
-  line-height: 80px;
+  font-size: calc(34 * var(--res));
   text-align: center;
 
   color: #FFFFFF;
@@ -82,8 +86,8 @@ UPLOAD
 
 
 .upload-zone {
-  width: 45em;
-  height: 11em;
+  width: 65%;
+  min-height: 150px;
 
   background-color: rgb(233, 233, 233);
 
@@ -102,9 +106,9 @@ UPLOAD
 }
 
 .textClick {
-  font-size: 22px;
+  font-size: calc(22 * var(--res));
 
-  width: 600px;
+  width: 100%;
 
   text-align: center;
 
@@ -115,9 +119,9 @@ UPLOAD
 }
 
 .textComm {
-  font-size: 16px;
+  font-size: calc(16 * var(--res));
 
-  width: 600px;
+  width: 100%;
 
   color: grey;
 
@@ -134,8 +138,7 @@ UPLOAD
 }
 
 .upload-zone img {
-  width: 40px;
-  height: 40px;
+  width: 7%;
 
   position: absolute;
   top: 17%;
@@ -144,14 +147,17 @@ UPLOAD
 }
 
 .currentFile {
-  color: rgb(255, 255, 255);
-
-  width: 1000px;
-
   position: absolute;
-  top: 350%;
+  margin-top: 13%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  color: rgb(255, 255, 255);
+
+  width: 200%;
+
+  font-size: calc(24 * var(--res));
+
 }
 
 /*
@@ -159,8 +165,7 @@ LINE
 */
 
 .line {
-  width: 700px;
-  height: 0px;
+  width: 75%;
 
   position: absolute;
   top: 41%;
@@ -175,16 +180,14 @@ REVIEW
 */
 
 .titleReview1 {
-  width: 765px;
-  height: 50px;
+  width: 80%;
 
   position: absolute;
-  margin-top: 334px;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  font-size: 34px;
-  line-height: 80px;
+  font-size: calc(34 * var(--res));
   text-align: center;
 
   color: #FFFFFF;
@@ -193,16 +196,14 @@ REVIEW
 }
 
 .paraReview {
-  width: 765px;
-  height: 20px;
+  width: 100%;
 
   position: absolute;
-  margin-top: 360px;
+  top: 51%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  font-size: 24px;
-  line-height: 80px;
+  font-size: calc(24 * var(--res));
   text-align: center;
 
   color: #FFFFFF;
@@ -215,27 +216,21 @@ BOOKING FORM
 */
 
 .name-input {
-  width: 288px;
-  height: 53px;
+  width: 30%;
 
   position: absolute;
-  margin-top: 455px;
+  top: 58%;
   left: 50%;
   transform: translate(-50%, -50%);
-
-  text-align: center;
 }
 
 .email-input {
-  width: 288px;
-  height: 53px;
+  width: 30%;
 
   position: absolute;
-  margin-top: 510px;
+  top: 65%;
   left: 50%;
   transform: translate(-50%, -50%);
-
-  text-align: center;
 }
 
 .date-picker {
@@ -244,7 +239,6 @@ BOOKING FORM
   left: 50%;
   transform: translate(-50%, -50%);
 
-  text-align: center;
 }
 
 .time-picker {
@@ -252,20 +246,18 @@ BOOKING FORM
   margin-top: 615px;
   left: 50%;
   transform: translate(-50%, -50%);
-
-  text-align: center;
 }
 
 .bookButton {
-  width: 380px;
-  height: 70px;
+  width: 40%;
+  height: 10%;
 
   border-radius: 30px;
 
-  font-size: 26px;
+  font-size: calc(26 * var(--res));
 
   position: absolute;
-  margin-top: 700px;
+  top: 93%;
   left: 50%;
   transform: translate(-50%, -50%);
 
