@@ -243,7 +243,7 @@ BOOKING FORM
   min-height: 3%;
 
   position: absolute;
-  top: 72%;
+  top: 73%;
   left: 50%;
   transform: translate(-50%, -50%);
 
@@ -254,7 +254,7 @@ BOOKING FORM
   min-height: 3%;
 
   position: absolute;
-  top: 79%;
+  top: 81%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -264,6 +264,7 @@ BOOKING FORM
   min-height: 10%;
 
   border-radius: 30px;
+  border: none;
 
   font-size: calc(26 * var(--res));
 
@@ -272,7 +273,6 @@ BOOKING FORM
   left: 50%;
   transform: translate(-50%, -50%);
 
-  background: rgb(255,0,129);
   background: linear-gradient(80deg, rgba(255,0,129,1) 0%, rgba(255,40,178,1) 49%, rgba(255,0,228,1) 100%);
   color: white;
 
