@@ -56,7 +56,7 @@ const ReviewSection: FC = () => {
     function displayFileChoosen(file: any) {
         if (file !== null && file !== undefined){
             return <p className="currentFile">{file.name}</p>;
-        }else {
+        } else {
             return <p></p>;
         }
     }
@@ -66,9 +66,11 @@ const ReviewSection: FC = () => {
             <h1 className="menuTitle1">Upload your video</h1>
             <label className="upload-zone">
                 <img src="uploadBtn.svg" alt="Upload logo"/>
-                <input className="upload-place" type="file" onChange={(e: any) => {setFile(e.target.files[0]);
-                                                                                            if(e.target.files[0] !== undefined && e.target.files[0] !== null)
-                                                                                                review.filename = e.target.files[0].name}}/>
+                <input className="upload-place" type="file" onChange={(e: any) => {
+                    setFile(e.target.files[0]);
+                    if(e.target.files[0] !== undefined && e.target.files[0] !== null)
+                        review.filename = e.target.files[0].name}}
+                />
                 <span className="textClick">Click or drag file to this area to upload{displayFileChoosen(file)}</span>
                 <span className="textComm">You can upload a maximum of one hour of video</span>
             </label>
