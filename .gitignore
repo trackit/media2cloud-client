@@ -1,0 +1,5 @@
+node_modules/
+.vs/
+.vscode/
+.idea/
+s3_constant.json
