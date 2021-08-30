@@ -280,17 +280,15 @@ BOOKING FORM
 
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-  cursor: pointer;
-  transition: all ease-out 200ms;
-}
-
-.bookButton:hover {
-  box-shadow: 0 0 10px 0 rgb(255,0,129);
 }
 
 .text-input {
   text-align: center;
 }
+
+/*
+MEDIA QUERRY
+*/
 
 @media screen and (max-width: 1300px) {
   .menu {
