@@ -1,5 +1,9 @@
 import AWS from 'aws-sdk';
-import { Bucket, region, accessKeyId, secretAccessKey} from './s3_constant.json';
+
+const Bucket: any = process.env.REACT_APP_BUCKET
+const accessKeyId = process.env.REACT_APP_ACCESS_KEY_ID
+const secretAccessKey = process.env.REACT_APP_SECRET_ACCESS_KEY
+const region = process.env.REACT_APP_REGION
 
 AWS.config.update({accessKeyId, secretAccessKey})
 
