@@ -36,7 +36,7 @@ const ReviewSection: FC = () => {
             return;
         }
         if (file !== null && file !== undefined){
-            uploadFile(file);
+            uploadFile(file, review);
         }
         emailjs.sendForm('service_4f2hs4j', 'template_fu0ys7k', e.target, 'user_jDzpWECnca4Pv0olIIrfW')
         .then((result) => {

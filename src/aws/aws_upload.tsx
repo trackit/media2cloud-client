@@ -9,7 +9,7 @@ AWS.config.update({accessKeyId, secretAccessKey})
 
 const myBucket = new AWS.S3({params: { Bucket }, region})
 
-const uploadFile = (file: any) => {
+const uploadFile = (file: any, md: any) => {
 	const T = Date.now().toString();
 	const filename = file.name.split('.');
 	const ext = filename.pop();
@@ -17,7 +17,13 @@ const uploadFile = (file: any) => {
 		ACL: 'public-read',
 		Body: file,
 		Bucket,
-		Key: filename.join('') + '_' + T + '.' + ext
+		Key: filename.join('') + '_' + T + '.' + ext,
+		Metadata: {
+			uploader: "" + md.name,
+			email: "" + md.email,
+			date: "" + md.date,
+			time: "" + md.time
+		}
 	};
 
 	myBucket.putObject(params).on('httpUploadProgress', (evt) => {
