@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import "../styles/App.css";
 import uploadFile from '../aws/aws_upload';
-import { Input, DatePicker, TimePicker } from 'antd';
+import { Input, DatePicker, TimePicker, message } from 'antd';
 import 'antd/dist/antd.css';
 import emailjs from 'emailjs-com';
 import moment from "moment";
@@ -32,7 +32,7 @@ const ReviewSection: FC = () => {
     async function sendEmail(e: any) {
         e.preventDefault();
         if (review.name === '' || review.email === '') {
-            alert("You must fill all the fields");
+            message.warning("You must fill all the fields", 4);
             return;
         }
         if (file !== null && file !== undefined){
@@ -43,7 +43,7 @@ const ReviewSection: FC = () => {
             console.log(result.text);
             setReview({ name: '', email: '', date: '', time: '', filename: '' });
             setFile(null);
-            alert("Your file has been successfully uploaded and you will receive an email with the date and time of the appointment you have booked")
+            message.success("Your file has been successfully uploaded and you will receive an email with the date and time of the appointment you have booked", 6)
         }, (error) => {
             console.log(error.text);
         });
@@ -71,7 +71,7 @@ const ReviewSection: FC = () => {
                 <input className="upload-place" type="file" onChange={(e: any) => {
                     if(e.target.files[0] !== undefined && e.target.files[0] !== null) {
                         if (e.target.files[0].size > oneGigaBytes)
-                            alert("You can upload a file of 1 Gb maximum")
+                            message.warning("You can upload a file of 1 Gb maximum", 4)
                         else {
                             setFile(e.target.files[0]);
                             review.filename = e.target.files[0].name
