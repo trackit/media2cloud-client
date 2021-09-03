@@ -61,21 +61,29 @@ const ReviewSection: FC = () => {
         }
     }
 
+    const oneGigaBytes = 1073741824
+
     return (
         <>
             <h1 className="menuTitle1">Upload your video</h1>
             <label className="upload-zone">
                 <img src="uploadBtn.svg" alt="Upload logo"/>
                 <input className="upload-place" type="file" onChange={(e: any) => {
-                    setFile(e.target.files[0]);
-                    if(e.target.files[0] !== undefined && e.target.files[0] !== null)
-                        review.filename = e.target.files[0].name}}
-                />
+                    if(e.target.files[0] !== undefined && e.target.files[0] !== null) {
+                        if (e.target.files[0].size > oneGigaBytes)
+                            alert("You can upload a file of 1 Gb maximum")
+                        else {
+                            setFile(e.target.files[0]);
+                            review.filename = e.target.files[0].name
+                        }
+                    }
+                }
+            }/>
                 <span className="textClick">Click or drag file to this area to upload{displayFileChoosen(file)}</span>
-                <span className="textComm">You can upload a maximum of one hour of video</span>
+                <span className="textComm">You can upload a file of 1 Gb maximum</span>
             </label>
             <div className="line"></div>
-            <h1 className="titleReview1">Get Your Review !</h1>
+            <h1 className="titleReview1">Get Your Review!</h1>
             <p className="paraReview">Book a meeting with our team to review your results</p>
             <form onSubmit={(e) => sendEmail(e)}>
                 <div style={displayNone}>
