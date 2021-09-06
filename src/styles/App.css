@@ -52,10 +52,26 @@ MENU
 
 .menu {
   width: 60%;
-  min-height: 80%;
+  min-height: 50%;
 
   position: absolute;
-  top: 58%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: inline-block;
+
+  background: #2E323E;
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.menu2 {
+  width: 60%;
+  min-height: 50%;
+
+  position: absolute;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
@@ -71,11 +87,11 @@ MENU
   min-height: 5%;
 
   position: absolute;
-  top: 4%;
+  top: 8%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  font-size: calc(34 * var(--res));
+  font-size: calc(40 * var(--res));
   text-align: center;
 
   color: #FFFFFF;
@@ -89,7 +105,7 @@ UPLOAD
 
 .upload-zone {
   width: 65%;
-  min-height: 21%;
+  min-height: 40%;
 
   background-color: rgb(233, 233, 233);
 
@@ -97,7 +113,7 @@ UPLOAD
   padding: 15px;
 
   position: absolute;
-  top: 20%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -123,7 +139,7 @@ UPLOAD
 .textComm {
   font-size: calc(16 * var(--res));
 
-  width: 100%;
+  width: 90%;
 
   color: grey;
 
@@ -151,34 +167,57 @@ UPLOAD
 
 .currentFile {
   position: absolute;
-  top: 360%;
+  top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  text-align: center;
 
   color: rgb(255, 255, 255);
 
-  width: 150%;
+  width: 100%;
   min-height: 7%;
 
   font-size: calc(24 * var(--res));
+}
 
+.currentFileLogo {
+  width: 3%;
+  min-height: 5%;
+
+  margin-right: 2%;
+
+  filter: invert(1);
+}
+
+.nextButton {
+  width: 10%;
+  min-height: 10%;
+
+  border: none;
+
+  font-size: calc(20 * var(--res));
+  color: black;
+
+  position: absolute;
+  top: 92%;
+  left: 93%;
+  transform: translate(-50%, -50%);
+}
+
+.nextButton:hover {
+  color:rgb(8, 144, 235);
+  border: 1px solid rgb(8, 144, 235);
 }
 
 /*
-LINE
+MODAL
 */
 
-.line {
-  width: 75%;
-  min-height: 0%;
-
-  position: absolute;
-  top: 41%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  border: 0.5px solid #FFFFFF;
+.modalCom {
+  text-align: center;
 }
+
 
 /*
 REVIEW
@@ -188,7 +227,7 @@ REVIEW
   width: 80%;
 
   position: absolute;
-  top: 45%;
+  top: 7%;
   left: 50%;
   transform: translate(-50%, -50%);
 
@@ -204,7 +243,7 @@ REVIEW
   width: 90%;
 
   position: absolute;
-  top: 51%;
+  top: 15%;
   left: 50%;
   transform: translate(-50%, -50%);
 
@@ -225,7 +264,7 @@ BOOKING FORM
   min-height: 3%;
 
   position: absolute;
-  top: 58%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -235,7 +274,7 @@ BOOKING FORM
   min-height: 3%;
 
   position: absolute;
-  top: 65%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -245,7 +284,7 @@ BOOKING FORM
   min-height: 3%;
 
   position: absolute;
-  top: 73%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
 
@@ -256,7 +295,7 @@ BOOKING FORM
   min-height: 3%;
 
   position: absolute;
-  top: 81%;
+  top: 75%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -271,7 +310,7 @@ BOOKING FORM
   font-size: calc(26 * var(--res));
 
   position: absolute;
-  top: 93%;
+  top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);
 
