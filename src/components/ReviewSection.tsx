@@ -86,7 +86,7 @@ const ReviewSection: FC = () => {
         )
     }
 
-    const FormBooking = () => {
+    const LinkToBook = () => {
         if (file !== null && file !== undefined){
         return (
             <>
@@ -123,7 +123,7 @@ const ReviewSection: FC = () => {
                         <span className="textComm">You can upload a file of 1 Gb maximum</span>
                     </label>
                     <div>{displayFileChoosen(file)}</div>
-                    <FormBooking />
+                    <LinkToBook />
                 </div>
             </>
         )
