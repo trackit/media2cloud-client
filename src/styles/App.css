@@ -205,19 +205,25 @@ UPLOAD
   transform: translate(-50%, -50%);
 }
 
-.nextButton:hover {
+.nextButton:hover, .previousButton:hover {
   color:rgb(8, 144, 235);
   border: 1px solid rgb(8, 144, 235);
 }
 
-/*
-MODAL
-*/
+.previousButton {
+  width: 10%;
+  min-height: 10%;
 
-.modalCom {
-  text-align: center;
+  border: none;
+
+  font-size: calc(18 * var(--res));
+  color: black;
+
+  position: absolute;
+  top: 92%;
+  left: 7%;
+  transform: translate(-50%, -50%);
 }
-
 
 /*
 REVIEW
