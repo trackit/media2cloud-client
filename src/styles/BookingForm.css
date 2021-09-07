@@ -14,7 +14,7 @@ MENU
 
 .menu2 {
     width: 60%;
-    min-height: 50%;
+    min-height: 55%;
 
     position: absolute;
     top: 50%;
@@ -90,18 +90,13 @@ REVIEW
 BOOKING FORM
 */
 
-.form {
-    width: 50%;
-    min-height: 60%;
-}
-
 .formBook
 {
     width: 50%;
-    min-height: 60%;
+    min-height: 70%;
 
     position: absolute;
-    top: 58%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
 
@@ -113,7 +108,7 @@ BOOKING FORM
 .formItem {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
 
     min-height: 10%;
 
