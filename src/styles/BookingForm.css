@@ -1,0 +1,196 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    --res: calc(0.01 * 10vmin);
+}
+
+/*
+MENU
+*/
+
+.menu2 {
+    width: 60%;
+    min-height: 50%;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background: #2E323E;
+
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/*
+BUTTON
+*/
+
+.previousButton {
+    width: 12%;
+    min-height: 10%;
+
+    border: none;
+
+    font-size: calc(18 * var(--res));
+    color: rgb(0, 0, 0);
+
+    position: absolute;
+    top: 92%;
+    left: 7%;
+    transform: translate(-50%, -50%);
+}
+
+.previousButton:hover {
+    color:rgb(8, 144, 235);
+    border: 1px solid rgb(8, 144, 235);
+}
+
+/*
+REVIEW
+*/
+
+.titleReview1 {
+    width: 80%;
+
+    position: absolute;
+    top: 7%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-size: calc(34 * var(--res));
+    text-align: center;
+
+    color: #FFFFFF;
+
+    z-index: 999;
+}
+
+.paraReview {
+    width: 90%;
+
+    position: absolute;
+    top: 18%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-size: calc(24 * var(--res));
+    text-align: center;
+
+    color: #FFFFFF;
+
+    z-index: 999;
+}
+
+/*
+BOOKING FORM
+*/
+
+.form {
+    width: 50%;
+    min-height: 60%;
+}
+
+.formBook
+{
+    width: 50%;
+    min-height: 60%;
+
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.349);
+
+    background-color: #fff;
+}
+
+.formItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    min-height: 10%;
+
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+.labelInput {
+    font-size: calc(16 * var(--res));
+
+    min-height: 5%;
+
+    margin-top: 10px;
+}
+
+.formInput {
+    width: 50%;
+    min-height: 5%;
+
+    margin-left: 10px;
+}
+
+.bookButton {
+    width: 16%;
+    min-height: 14%;
+
+    border: none;
+
+    font-size: calc(20 * var(--res));
+
+    position: absolute;
+    top: 90%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+
+    background-color: rgb(8, 144, 235);
+    color: #fff;
+}
+
+.bookButton:hover {
+    background-color: #fff;
+    color: rgb(8, 144, 235);
+    border: 2px solid rgb(8, 144, 235);
+}
+
+/*
+MEDIA QUERRY
+*/
+
+@media screen and (max-width: 1300px) {
+    .menu2 {
+      width: 70%;
+    }
+}
+
+/* @media screen and (max-width: 1045px) {
+    .previousButton {
+        width: 14%;
+    }
+} */
+
+@media screen and (max-width: 500px) {
+    .name-input, .email-input {
+        width: 50%;
+    }
+    .date-picker, .time-picker {
+        max-width: 50%;
+    }
+    .titleReview1 {
+        font-size: calc(50 * var(--res));
+    }
+    .paraReview {
+        font-size: calc(35 * var(--res));
+    }
+    .bookButton {
+        font-size: calc(30 * var(--res));
+        width: 25%;
+        left: 85%;
+    }
+}

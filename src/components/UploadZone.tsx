@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/App.css";
+import "../styles/UploadZone.css";
 import {  message } from 'antd';
 import 'antd/dist/antd.css';
 import { Link } from 'react-router-dom';
@@ -21,6 +21,21 @@ const UploadZone = ({file, setFile}: propsUpload) => {
         }
     };
 
+    const NextButton = () => {
+        return (
+            <>
+                {file !== null && file !== undefined ?
+                    <Link style={{textDecoration: "none"}} to="/Booking">
+                        <button className="nextButton">
+                            Next
+                        </button>
+                    </Link>
+                    : <> </>
+                }
+            </>
+        )
+    }
+
     return (
         <>
             <div className="menu">
@@ -41,14 +56,7 @@ const UploadZone = ({file, setFile}: propsUpload) => {
                     <span className="textComm">You can upload a file of 1 Gb maximum</span>
                 </label>
                 <div>{displayFileChoosen(file)}</div>
-                {file !== null && file !== undefined ?
-                    <Link style={{textDecoration: "none"}} to="/Booking">
-                        <button className="nextButton">
-                            Next
-                        </button>
-                    </Link>
-                    : <> </>
-                }
+                <NextButton />
             </div>
         </>
     )

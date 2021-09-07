@@ -1,5 +1,4 @@
 import React, { FC, useState } from "react";
-import "../styles/App.css";
 import 'antd/dist/antd.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import UploadZone from './UploadZone';

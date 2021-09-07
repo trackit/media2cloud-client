@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "../styles/App.css";
+import "../styles/BookingForm.css";
 import uploadFile from '../aws/aws_upload';
-import { Input, DatePicker, TimePicker, message } from 'antd';
+import { Input, DatePicker, TimePicker, message, notification } from 'antd';
 import 'antd/dist/antd.css';
 import emailjs from 'emailjs-com';
 import moment from "moment";
@@ -33,6 +33,14 @@ const BookingForm = ({file, setFile}: propsUpload) => {
         setReview(obj);
     };
 
+    const succesNotifications = () => {
+        notification['success']({
+            message: 'Success',
+            description: 'Your file has been successfully uploaded and you will receive an email with the date and time of the appointment you have booked',
+            duration: 10,
+        });
+    };
+
     async function sendEmail(e: any) {
         e.preventDefault();
         if (review.name === '' || review.email === '') {
@@ -47,10 +55,22 @@ const BookingForm = ({file, setFile}: propsUpload) => {
             console.log(result.text);
             setReview({ name: '', email: '', date: '', time: ''});
             setFile(null);
-            message.success("Your file has been successfully uploaded and you will receive an email with the date and time of the appointment you have booked", 6)
+            succesNotifications();
         }, (error) => {
             console.log(error.text);
         });
+    }
+
+    const PreviousButton = () => {
+        return (
+            <>
+                <Link style={{textDecoration: "none"}} to="/">
+                    <button className="previousButton">
+                        Previous
+                    </button>
+                </Link>
+            </>
+        )
     }
 
     return (
@@ -58,26 +78,26 @@ const BookingForm = ({file, setFile}: propsUpload) => {
             <div className="menu2">
                 <h1 className="titleReview1">Get Your Review!</h1>
                 <p className="paraReview">Book a meeting with our team to review your results</p>
-                <form onSubmit={(e) => sendEmail(e)}>
-                    <div className="name-input">
-                        <Input value={review.name} onChange={(e: any) => changeText(e.currentTarget.value, 'name')} placeholder="Name" className="text-input" name="name" />
+                <form className="formBook" onSubmit={(e) => sendEmail(e)}>
+                    <div className="formItem">
+                        <p className="labelInput">Full Name:</p>
+                        <Input className="formInput" value={review.name} onChange={(e: any) => changeText(e.currentTarget.value, 'name')} />
                     </div>
-                    <div className="email-input">
-                        <Input value={review.email} onChange={(e: any) => changeText(e.currentTarget.value, 'email')} placeholder="Email adress" className="text-input" name="email" />
+                    <div className="formItem">
+                        <p className="labelInput">Email:</p>
+                        <Input className="formInput" value={review.email} onChange={(e: any) => changeText(e.currentTarget.value, 'email')} />
                     </div>
-                    <div className="date-picker">
-                        <DatePicker disabledDate={disableDate} onChange={(date, content) => changeText(content, 'date')} size="large" placeholder="Select Date" name="date" />
+                    <div className="formItem">
+                        <p className="labelInput">Date:</p>
+                        <DatePicker className="formInput" disabledDate={disableDate} onChange={(date, content) => changeText(content, 'date')} size="large" />
                     </div>
-                    <div className="time-picker">
-                        <TimePicker onChange={(date, content) => changeText(content, 'time')} format="HH:mm" size="large" placeholder="Select Time" name="time" />
+                    <div className="formItem">
+                        <p className="labelInput">Hour:</p>
+                        <TimePicker className="formInput" onChange={(date, content) => changeText(content, 'time')} format="HH:mm" size="large" />
                     </div>
-                    <button type="submit" className="bookButton">Book</button>
+                    <button type="submit" className="bookButton">book</button>
                 </form>
-                <Link style={{textDecoration: "none"}} to="/">
-                    <button className="previousButton">
-                        Previous
-                    </button>
-                </Link>
+                <PreviousButton />
             </div>
         </>
     )
