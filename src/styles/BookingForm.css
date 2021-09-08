@@ -13,8 +13,8 @@ MENU
 */
 
 .menu2 {
-    width: 60%;
-    min-height: 55%;
+    width: 70%;
+    min-height: 65%;
 
     position: absolute;
     top: 50%;
@@ -35,6 +35,7 @@ BUTTON
     min-height: 10%;
 
     border: none;
+    border-radius: 20px;
 
     font-size: calc(18 * var(--res));
     color: rgb(0, 0, 0);
@@ -47,7 +48,7 @@ BUTTON
 
 .previousButton:hover {
     color:rgb(8, 144, 235);
-    border: 1px solid rgb(8, 144, 235);
+    border: 2px solid rgb(8, 144, 235);
 }
 
 /*
@@ -92,56 +93,83 @@ BOOKING FORM
 
 .formBook
 {
-    width: 50%;
-    min-height: 70%;
+    width: 60%;
+    min-height: 90%;
+
+    border-radius: 20px;
+    box-sizing: border-box;
 
     position: absolute;
-    top: 60%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.349);
 
-    background-color: #fff;
+    background-color: #171A29;
 }
 
-.formItem {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+.formItem1 {
+    position: absolute;
+    top: 32%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
-    min-height: 10%;
+    width: 60%;
+}
 
-    margin-top: 20px;
-    margin-left: 15px;
+.formItem2 {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 60%;
+}
+
+.formItem3 {
+    position: absolute;
+    top: 72%;
+    left: 33%;
+    transform: translate(-50%, -50%);
+
+    max-width: 30%;
+}
+
+.formItem4 {
+    position: absolute;
+    top: 72%;
+    left: 69%;
+    transform: translate(-50%, -50%);
+
+    max-width: 30%;
 }
 
 .labelInput {
-    font-size: calc(16 * var(--res));
+    font-size: calc(18 * var(--res));
 
-    min-height: 5%;
-
-    margin-top: 10px;
+    color: #fff;
 }
 
 .formInput {
-    width: 50%;
-    min-height: 5%;
+    text-align: center;
 
-    margin-left: 10px;
+    color: #000000;
+    background-color: rgb(255, 255, 255);
 }
 
 .bookButton {
-    width: 16%;
-    min-height: 14%;
+    width: 14%;
+    min-height: 10%;
 
     border: none;
+    border-radius: 20px;
 
     font-size: calc(20 * var(--res));
 
     position: absolute;
-    top: 90%;
-    left: 90%;
+    top: 92%;
+    left: 91%;
     transform: translate(-50%, -50%);
 
     background-color: rgb(8, 144, 235);
@@ -163,12 +191,6 @@ MEDIA QUERRY
       width: 70%;
     }
 }
-
-/* @media screen and (max-width: 1045px) {
-    .previousButton {
-        width: 14%;
-    }
-} */
 
 @media screen and (max-width: 500px) {
     .name-input, .email-input {

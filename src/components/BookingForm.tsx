@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/BookingForm.css";
 import uploadFile from '../aws/aws_upload';
-import { Input, DatePicker, TimePicker, message, notification } from 'antd';
+import { Input, DatePicker, TimePicker, message, notification, Modal } from 'antd';
 import 'antd/dist/antd.css';
 import emailjs from 'emailjs-com';
 import moment from "moment";
@@ -14,6 +14,13 @@ interface propsUpload {
 
 const BookingForm = ({file, setFile}: propsUpload) => {
     const [review, setReview] = useState({ name: '', email: '', date: '', time: '' });
+    const [isVisible, setVisible] = useState(true);
+    const [agreement, setAgreement] = useState(false);
+
+    const handleCancel = () => {
+        message.error("You refuse the agreement");
+        setVisible(false);
+    }
 
     function disableDate(current: any) {
         return current && current < moment().endOf('day');
@@ -59,7 +66,7 @@ const BookingForm = ({file, setFile}: propsUpload) => {
         }, (error) => {
             console.log(error.text);
         });
-    }
+    };
 
     const PreviousButton = () => {
         return (
@@ -73,30 +80,57 @@ const BookingForm = ({file, setFile}: propsUpload) => {
         )
     }
 
+    function acceptAgreement() {
+        setVisible(false)
+        setAgreement(true)
+        message.success("You accept the agreements !")
+    }
+
+    const SubmitButton = () => {
+        if (agreement === true) {
+            return <> <button type="submit" className="bookButton">book</button> </>
+        } else {
+            return <></>
+        }
+    }
+
+    const AcceptAgreement = () => {
+            return (
+                <>
+                    <Modal title="Agreement" visible={isVisible} centered={true} onCancel={handleCancel} onOk={acceptAgreement} cancelText="I refuse" okText="I accept">
+                        <p>User asserts that they have the right to grant access of any uploaded media to this TrackIt tool for the sole purpose of demonstrating to User the Amazon Media2Cloud machine learning pipeline by TrackIt.</p>
+                    </Modal>
+                    <SubmitButton />
+                </>
+            )
+    }
+
     return (
         <>
             <div className="menu2">
-                <h1 className="titleReview1">Get Your Review!</h1>
-                <p className="paraReview">Book a meeting with our team to review your results</p>
-                <form className="formBook" onSubmit={(e) => sendEmail(e)}>
-                    <div className="formItem">
-                        <p className="labelInput">Full Name:</p>
-                        <Input className="formInput" value={review.name} onChange={(e: any) => changeText(e.currentTarget.value, 'name')} />
-                    </div>
-                    <div className="formItem">
-                        <p className="labelInput">Email:</p>
-                        <Input className="formInput" value={review.email} onChange={(e: any) => changeText(e.currentTarget.value, 'email')} />
-                    </div>
-                    <div className="formItem">
-                        <p className="labelInput">Date:</p>
-                        <DatePicker className="formInput" disabledDate={disableDate} onChange={(date, content) => changeText(content, 'date')} size="large" />
-                    </div>
-                    <div className="formItem">
-                        <p className="labelInput">Hour:</p>
-                        <TimePicker className="formInput" onChange={(date, content) => changeText(content, 'time')} format="HH:mm" size="large" />
-                    </div>
-                    <button type="submit" className="bookButton">book</button>
-                </form>
+                <div className="formBook">
+                    <h1 className="titleReview1">Get Your Review!</h1>
+                    <p className="paraReview">Book a meeting with our team to review your results</p>
+                    <form onSubmit={(e) => sendEmail(e)}>
+                        <div className="formItem1">
+                            <p className="labelInput">Full Name :</p>
+                            <Input className="formInput" placeholder="Enter your full name" value={review.name} onChange={(e: any) => changeText(e.currentTarget.value, 'name')} name="name" />
+                        </div>
+                        <div className="formItem2">
+                            <p className="labelInput">Email :</p>
+                            <Input className="formInput" placeholder="Enter your email" value={review.email} onChange={(e: any) => changeText(e.currentTarget.value, 'email')} name="email" />
+                        </div>
+                        <div className="formItem3">
+                            <p className="labelInput">Date :</p>
+                            <DatePicker className="formInput" disabledDate={disableDate} onChange={(date, content) => changeText(content, 'date')} size="large" name="date" />
+                        </div>
+                        <div className="formItem4">
+                            <p className="labelInput">Hour :</p>
+                            <TimePicker className="formInput" onChange={(date, content) => changeText(content, 'time')} format="HH:mm" size="large" name="time"/>
+                        </div>
+                        <AcceptAgreement />
+                    </form>
+                </div>
                 <PreviousButton />
             </div>
         </>
