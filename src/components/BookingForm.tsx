@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import "../styles/BookingForm.css";
-import uploadFile from '../aws/aws_upload';
 import { Input, DatePicker, TimePicker, message, notification, Modal } from 'antd';
+import { Link, useHistory } from 'react-router-dom';
+import "../styles/BookingForm.css";
+import "../styles/App.css";
 import 'antd/dist/antd.css';
+import uploadFile from '../aws/aws_upload';
 import emailjs from 'emailjs-com';
 import moment from "moment";
-import { Link } from 'react-router-dom';
 
 interface propsUpload {
     file: any;
@@ -17,8 +18,10 @@ const BookingForm = ({file, setFile}: propsUpload) => {
     const [isVisible, setVisible] = useState(true);
     const [agreement, setAgreement] = useState(false);
 
+    let history = useHistory();
+
     const handleCancel = () => {
-        message.error("You refuse the agreement");
+        history.push('/');
         setVisible(false);
     }
 
@@ -40,7 +43,7 @@ const BookingForm = ({file, setFile}: propsUpload) => {
         setReview(obj);
     };
 
-    const succesNotifications = () => {
+    const succesNotification = () => {
         notification['success']({
             message: 'Success',
             description: 'Your file has been successfully uploaded and you will receive an email with the date and time of the appointment you have booked',
@@ -62,11 +65,24 @@ const BookingForm = ({file, setFile}: propsUpload) => {
             console.log(result.text);
             setReview({ name: '', email: '', date: '', time: ''});
             setFile(null);
-            succesNotifications();
+            succesNotification();
         }, (error) => {
             console.log(error.text);
         });
     };
+
+    const acceptAgreement = () => {
+        setVisible(false)
+        setAgreement(true)
+    }
+
+    const SubmitButton = () => {
+        if (agreement === true) {
+            return <> <button type="submit" className="bookButton">book</button> </>
+        } else {
+            return <></>
+        }
+    }
 
     const PreviousButton = () => {
         return (
@@ -80,25 +96,12 @@ const BookingForm = ({file, setFile}: propsUpload) => {
         )
     }
 
-    function acceptAgreement() {
-        setVisible(false)
-        setAgreement(true)
-        message.success("You accept the agreements !")
-    }
-
-    const SubmitButton = () => {
-        if (agreement === true) {
-            return <> <button type="submit" className="bookButton">book</button> </>
-        } else {
-            return <></>
-        }
-    }
-
     const AcceptAgreement = () => {
             return (
                 <>
-                    <Modal title="Agreement" visible={isVisible} centered={true} onCancel={handleCancel} onOk={acceptAgreement} cancelText="I refuse" okText="I accept">
+                    <Modal title="User Agreement" visible={isVisible} centered={true} onCancel={handleCancel} onOk={acceptAgreement} cancelText="I refuse" okText="I accept">
                         <p>User asserts that they have the right to grant access of any uploaded media to this TrackIt tool for the sole purpose of demonstrating to User the Amazon Media2Cloud machine learning pipeline by TrackIt.</p>
+                        <p>We need your agreement in order to review your media.</p>
                     </Modal>
                     <SubmitButton />
                 </>
@@ -107,6 +110,8 @@ const BookingForm = ({file, setFile}: propsUpload) => {
 
     return (
         <>
+            <h1 className="title1">Welcome to TrackIt</h1>
+			<h2 className="title2">Media2Cloud Analysis</h2>
             <div className="menu2">
                 <div className="formBook">
                     <h1 className="titleReview1">Get Your Review!</h1>
