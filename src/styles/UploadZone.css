@@ -145,7 +145,7 @@ BUTTON
     min-height: 10%;
 
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
 
     font-size: calc(20 * var(--res));
     color: rgb(0, 0, 0);
@@ -185,5 +185,17 @@ MEDIA QUERRY
     .upload-zone img {
         width: 15%;
         min-height: 20%;
+    }
+    .currentFile {
+        font-size: calc(30 * var(--res));
+    }
+    .currentFileLogo {
+        width: 5%;
+    min-height: 7%;
+    }
+    .nextButton {
+        width: 13%;
+        left: 91%;
+        font-size: calc(26 * var(--res));
     }
 }

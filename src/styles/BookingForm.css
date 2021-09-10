@@ -32,17 +32,17 @@ BUTTON
 
 .previousButton {
     width: 12%;
-    min-height: 10%;
+    min-height: 8%;
 
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
 
     font-size: calc(18 * var(--res));
     color: rgb(0, 0, 0);
 
     position: absolute;
     top: 92%;
-    left: 7%;
+    left: 8%;
     transform: translate(-50%, -50%);
 }
 
@@ -156,6 +156,8 @@ BOOKING FORM
 
     color: #000000;
     background-color: rgb(255, 255, 255);
+
+    min-height: 3%;
 }
 
 .bookButton {
@@ -163,7 +165,7 @@ BOOKING FORM
     min-height: 10%;
 
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
 
     font-size: calc(20 * var(--res));
 
@@ -193,6 +195,12 @@ MEDIA QUERRY
 }
 
 @media screen and (max-width: 500px) {
+    .menu2 {
+        min-height: 75%;
+    }
+    .formBook {
+        min-height: 80%;
+    }
     .name-input, .email-input {
         width: 50%;
     }
@@ -200,14 +208,42 @@ MEDIA QUERRY
         max-width: 50%;
     }
     .titleReview1 {
-        font-size: calc(50 * var(--res));
+        font-size: calc(44 * var(--res));
     }
     .paraReview {
-        font-size: calc(35 * var(--res));
+        font-size: calc(28 * var(--res));
+        top: 20%;
     }
     .bookButton {
         font-size: calc(30 * var(--res));
+        min-height: 7%;
         width: 25%;
         left: 85%;
+    }
+    .previousButton {
+        width: 15%;
+        min-height: 6%;
+        top: 95%;
+        left: 10%;
+        font-size: calc(22 * var(--res));
+    }
+    .labelInput {
+        font-size: calc(28 * var(--res));
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .bookButton {
+        font-size: calc(34 * var(--res));
+        min-height: 7%;
+        width: 30%;
+        left: 80%;
+    }
+    .previousButton {
+        width: 20%;
+        min-height: 5%;
+        top: 95%;
+        left: 14%;
+        font-size: calc(30 * var(--res));
     }
 }
