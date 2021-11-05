@@ -5,6 +5,9 @@ import "../styles/UploadZone.css";
 import "../styles/App.css";
 import 'antd/dist/antd.css';
 
+import FileUpload from './img/fileUpload.svg'
+import UploadButton from './img/uploadBtn.svg'
+
 interface propsUpload {
     file: any;
     setFile: any;
@@ -17,7 +20,7 @@ const UploadZone = ({file, setFile}: propsUpload) => {
 
     function displayFileChoosen(file: any) {
         if (file !== null && file !== undefined){
-            return <span className="currentFile"><img className="currentFileLogo" src="fileUpload.svg" alt="Upload File Logo" />{file.name}</span>;
+            return <span className="currentFile"><img className="currentFileLogo" src={FileUpload} alt="Upload File Logo" />{file.name}</span>;
         } else {
             return <></>;
         }
@@ -45,7 +48,7 @@ const UploadZone = ({file, setFile}: propsUpload) => {
             <div className="menu">
                 <h1 className="menuTitle1">Upload your media</h1>
                 <label className="upload-zone">
-                    <img src="uploadBtn.svg" alt="Upload logo"/>
+                    <img src={UploadButton} alt="Upload logo"/>
                     <input accept={authorizedFile} className="upload-place" type="file" onChange={(e: any) => {
                         if(e.target.files[0] !== undefined && e.target.files[0] !== null) {
                             if (e.target.files[0].size > oneGigaBytes)
